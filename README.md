@@ -1,3 +1,28 @@
+## LeafPress Drive Take Home Assignment
+
+My Google Drive application has the following features:
+
+- Create Folders using the CreateFolder button
+- Upload Folders using the UploadFolder button
+- Drag and Drop folders into the Dropzone (current limitation -> must have a file in the folder)
+- Real-time folder display using onSnapshot from Firebase
+- Drag-and-Drop folder cards onto each other to move folders around
+- Rename folder using the settings menu on each card
+- Delete folder using the settings menu on each card
+- Clickable Breadcrumbs to show the path to the current folder
+- Basic auth using the Google SignIn provider from Firebase
+- Basic SideNav (just for aesthetics right now)
+
+
+Areas for future improvement: 
+
+- More robust error handling all across the board
+- Build out the authentication
+- SideNav links
+- Empty folders for the Dropzone
+- Testing !!
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
