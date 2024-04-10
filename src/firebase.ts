@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, query, updateDoc, where } from "firebase/firestore";
 import { FolderData, PathItem } from "./actions";
+import { FolderTreeNode } from "./common";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -16,6 +17,22 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
+
+export async function addFolderTree(root: FolderTreeNode, parent: FolderData) {
+  const docRef = await addFolder(root.name, parent);
+
+  if (docRef !== undefined) {
+    const doc = await getDoc(docRef);
+    root.children.forEach(child => {
+      addFolderTree(child, {
+        id: doc.id,
+        parentId: doc.data()!.parentId,
+        name: doc.data()!.name,
+        path: doc.data()!.path,
+      })
+    })
+  }
+}
 
 export async function addFolder(folderName: string, parent: FolderData) {
   // check if folder already exists with that name
@@ -32,7 +49,7 @@ export async function addFolder(folderName: string, parent: FolderData) {
     return;
   }
 
-  await addDoc(collection(db, "folders"), {
+  return await addDoc(collection(db, "folders"), {
     name: folderName,
     userId: auth.currentUser?.uid,
     parentId: parent ? parent.id : null,

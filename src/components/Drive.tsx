@@ -19,7 +19,7 @@ export default function Drive() {
       <Grid item xs={2}>
         <SideNav />
       </Grid>
-      <Grid item xs={9} sx={{ pt: 3 }}>
+      <Grid item xs={10} sx={{ pt: 3 }}>
         <Stack spacing={5}>
           <Stack spacing={1}>
             <FolderBreadcrumbs currentFolder={folder}/>

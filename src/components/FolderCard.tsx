@@ -14,7 +14,7 @@ function FolderCardHeader({ folder }: { folder: string }) {
       display: "flex",
       alignItems: "center"
     }}>
-        <Folder sx={{ pr: 2 }}/>
+        <Folder sx={{ pr: 1 }}/>
         {folder}
     </div>
   )

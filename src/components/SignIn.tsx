@@ -1,5 +1,4 @@
-import { GoogleAuthProvider, User, signInWithPopup } from "firebase/auth";
-import { useState } from "react";
+import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase";
 import { Button, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
